@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Task } from '../../models/task.class';
+import { LEVELS } from '../../models/levels.enum';
 
 // Importamos la hoja de estilos de task
 import '../../styles/task.css';
-import { LEVELS } from '../../models/levels.enum';
 
 
 const TaskComponent = ({task, complete, remove}) => {
@@ -53,7 +53,7 @@ const TaskComponent = ({task, complete, remove}) => {
 
     return (
 
-        <tr className='fw-normal'>
+        <tr className={'fw-normal ' + (task.completed ? 'task-completed' : 'task-pending')}>
             <th>
             <span className='ms-2'>{task.name}</span>
             </th>
@@ -68,11 +68,13 @@ const TaskComponent = ({task, complete, remove}) => {
             {/* Execution of function to return icon depending on completion */}
                 {taskCompletedIcon()}
             </td>
+            <td>
             <i 
             className='bi-trash task-action' 
             style={ {color:'tomato', fontSize: '1.8rem'}}
             onClick={() => remove(task)}
             ></i>
+            </td>
         </tr>
     );
 };

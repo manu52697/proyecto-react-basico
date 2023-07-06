@@ -1,9 +1,14 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { LEVELS } from '../../../models/levels.enum';
 import { Task } from '../../../models/task.class';
 
-const TaskForm = ({add}) => {
+// styles
+import '../../../styles/taskform.css';
+
+const TaskForm = ({add, length}) => {
+
+    const [levelSelected, setLevelSelected] = useState(LEVELS.NORMAL);
 
     const nameRef = useRef('');
     const descriptionRef = useRef('');
@@ -18,6 +23,28 @@ const TaskForm = ({add}) => {
             levelRef.current.value
         );
         add(newTask);
+    }
+
+    const priorityClassNames = (level) => {
+
+        switch (level) {
+            case LEVELS.BLOCKING:
+                return 'priority-blocking';
+
+            case LEVELS.PRIORITY:
+                return 'priority-priority';
+            
+            // case LEVELS.NORMAL:
+            //     return 'priority-normal';
+
+            default:
+                return 'priority-normal';
+        }
+    } 
+
+    function onSelectLevel(){
+        setLevelSelected(levelRef.current.value);
+        console.log('New level selected: ' + levelSelected);
     }
 
     return (
@@ -43,21 +70,34 @@ const TaskForm = ({add}) => {
                 required
                 placeholder='Task Description'
                 />
-                <label htmlFor='selectLevel' className='sr-only'>Priority level</label>
-                <select ref={levelRef} defaultValue={LEVELS.NORMAL} id='selectLevel'>
-                <option value={LEVELS.NORMAL}>normal</option>
-                <option value={LEVELS.PRIORITY}>urgent</option>
-                <option value={LEVELS.BLOCKING}>blocking</option>
+                
+                <select 
+                className={'form-control form-control-lg ' + priorityClassNames(levelSelected)} 
+                onInput={onSelectLevel}
+                // onFocus={onSelectLevel}
+                
+                ref={levelRef} 
+                defaultValue={LEVELS.NORMAL} 
+                id='selectLevel'>
+                    <option  value={LEVELS.NORMAL}>Normal</option>
+                    <option  value={LEVELS.PRIORITY}>Urgent</option>
+                    <option  value={LEVELS.BLOCKING}>Blocking</option>
                 </select>
+                <button 
+                type='submit' 
+                className='btn btn-success btn-lg ms-2'>
+                { length > 0 ? 'Add new task' : 'Create a task' }
+                </button>
             </div>
-            <button type='submit' className='btn btn-success btn-lg ms-2'>Add</button>
+            
 
         </form>
     );
 }
 
 TaskForm.proptypes = {
-    add: PropTypes.func.isRequired
+    add: PropTypes.func.isRequired,
+    length: PropTypes.number.isRequired,
 }
 
 export default TaskForm;

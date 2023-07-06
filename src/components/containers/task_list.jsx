@@ -6,6 +6,7 @@ import TaskComponent from '../pure/task';
 // Importamos la hoja de estilos task.scss
 import '../../styles/task.css';
 import TaskForm from '../pure/forms/taskForm';
+import Loader from '../pure/loader';
 
 const TaskListComponent = () => {
 
@@ -20,7 +21,10 @@ const TaskListComponent = () => {
     //Control del ciclo de vida del componente
     useEffect(() => {
         console.log('Task State has been modified')
-        setLoading(false);
+        setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+        
         return () => {
             console.log('TaskList is going to unmount...')
         };
@@ -54,16 +58,8 @@ const TaskListComponent = () => {
         setTasks(tempTasks);
     }
 
-    return (
-        <div className='col-12'>
-        <div className='card'>
-        {/* Card header */}
-            <div className='card-header p-3'>
-                <h5>Your Tasks:</h5>
-            </div>
-            {/* Card Body */}
-            <div className='card-body' data-mdb-perfect-scrollbar='true' style={ {position: 'relative', height: '400px'} }>
-            <table>
+    const taskTable = () => (
+        <table>
                 <thead>
                 <tr>
                     <th scope='col'>
@@ -88,11 +84,34 @@ const TaskListComponent = () => {
                     })}
                 </tbody>
             </table>
+    )
+
+    const noTasks = () => {
+        return (
+            <div>
+                <h3>No tasks to show</h3>
+                <h4>Please, create one</h4>
+            </div>
+        )
+    }
+
+    const taskDisplay = tasks.length > 0 ? taskTable() : noTasks();
+
+    return (
+        <div className='col-12'>
+        <div className='card'>
+        {/* Card header */}
+            <div className='card-header p-3'>
+                <h5>Your Tasks:</h5>
+            </div>
+            {/* Card Body */}
+            <div className='card-body' data-mdb-perfect-scrollbar='true' style={ {position: 'relative', height: '400px'} }>
+            {loading ? <Loader></Loader> : taskDisplay}
             </div>
             
         </div>
         {/* TODO: pass a callback function to add a task */}
-        <TaskForm add={addTask}></TaskForm>
+        <TaskForm add={addTask} length={tasks.length}></TaskForm>
         </div>
     );
 };

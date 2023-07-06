@@ -1,0 +1,19 @@
+@import "../../node_modules/bootstrap/scss/_functions.scss";
+@import "../../node_modules/bootstrap/scss/_variables.scss";
+
+@mixin priority-selector($colorname){
+    font-weight: bold;
+    color: $colorname;
+}
+
+.priority-normal {
+    @include priority-selector($primary);
+}
+
+.priority-priority {
+    @include priority-selector($warning);
+}
+
+.priority-blocking {
+    @include priority-selector($danger);
+}
