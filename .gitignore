@@ -3,6 +3,9 @@
 # personal notes
 /.notes
 
+# ignore example files
+/src/hooks/examples
+
 # sass output files
 /src/styles/**.css
 /src/styles/**.css.map
