@@ -6,8 +6,8 @@ import React from 'react';
 
 const Loader = () => {
     return (
-        <div class="spinner-border text-secondary" role="status">
-            <span class="sr-only visually-hidden">Loading...</span>
+        <div className="spinner-border text-secondary" role="status">
+            <span className="sr-only visually-hidden">Loading...</span>
         </div>
     );
 };
