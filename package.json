@@ -21,6 +21,7 @@
     "sass": "node_modules/sass/sass.js --watch src/styles/:src/styles/"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "sass": "^1.63.6"
   },
   "browserslist": {
