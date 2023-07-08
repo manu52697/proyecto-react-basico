@@ -6,14 +6,14 @@
     color: $colorname;
 }
 
-.priority-normal {
+.levels-normal {
     @include priority-selector($primary);
 }
 
-.priority-priority {
+.levels-priority {
     @include priority-selector($warning);
 }
 
-.priority-blocking {
+.levels-blocking {
     @include priority-selector($danger);
 }

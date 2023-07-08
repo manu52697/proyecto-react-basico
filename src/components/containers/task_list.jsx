@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import { Task } from '../../models/task.class';
 import { LEVELS } from '../../models/levels.enum';
-import TaskComponent from '../pure/task';
+import TaskComponent from '../pure/taskComponent';
 
 // Importamos la hoja de estilos task.scss
 import '../../styles/task.css';
-import TaskForm from '../pure/forms/taskForm';
+// import TaskFormBase from '../pure/forms/tasks/taskFormBase';
 import Loader from '../pure/loader';
+import TaskFormik from '../pure/forms/tasks/taskFormik';
 
 const TaskListComponent = () => {
 
@@ -67,7 +68,7 @@ const TaskListComponent = () => {
                     </th>
                     <th scope='col'>Description</th>
                     <th scope='col'>Priority</th>
-                    <th scope='col'>Actions</th>
+                    <th scope='col' colSpan="2">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -98,20 +99,24 @@ const TaskListComponent = () => {
     const taskDisplay = tasks.length > 0 ? taskTable() : noTasks();
 
     return (
-        <div className='col-12'>
+        <div className='d-flex flex-row'>
         <div className='card'>
         {/* Card header */}
             <div className='card-header p-3'>
-                <h5>Your Tasks:</h5>
+                <h4>Your Tasks:</h4>
             </div>
             {/* Card Body */}
-            <div className='card-body' data-mdb-perfect-scrollbar='true' style={ {position: 'relative', height: '400px'} }>
+            <div className='card-body justify-content-center' data-mdb-perfect-scrollbar='true' style={ {minHeight:'60vh', minWidth:'30vw'} }>
             {loading ? <Loader></Loader> : taskDisplay}
             </div>
             
         </div>
-        {/* TODO: pass a callback function to add a task */}
-        <TaskForm add={addTask} length={tasks.length}></TaskForm>
+        <div className='col-1'></div>
+        {/* //! DEPRECATED: Old form to add a task */}
+        {/* <TaskFormBase add={addTask} length={tasks.length}></TaskFormBase> */}
+
+        {/* //TODO extract the card here and render the component right in the card-body */}
+        <TaskFormik add={addTask} length={tasks.length}></TaskFormik>
         </div>
     );
 };

@@ -9,8 +9,8 @@ const App = () => {
     return (
     <div className="App">
       
-      {/* <TaskPage></TaskPage> */}
-      <RegisterPage></RegisterPage>
+      <TaskPage></TaskPage>
+      {/* <RegisterPage></RegisterPage> */}
 
       
     </div>

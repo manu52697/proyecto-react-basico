@@ -1,12 +1,12 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { LEVELS } from '../../../models/levels.enum';
-import { Task } from '../../../models/task.class';
+import { LEVELS } from '../../../../models/levels.enum';
+import { Task } from '../../../../models/task.class';
 
 // styles
-import '../../../styles/taskform.css';
+import '../../../../styles/taskform.css';
 
-const TaskForm = ({add, length}) => {
+const TaskFormBase = ({add, length}) => {
 
     const [levelSelected, setLevelSelected] = useState(LEVELS.NORMAL);
 
@@ -95,9 +95,9 @@ const TaskForm = ({add, length}) => {
     );
 }
 
-TaskForm.proptypes = {
+TaskFormBase.proptypes = {
     add: PropTypes.func.isRequired,
     length: PropTypes.number.isRequired,
 }
 
-export default TaskForm;
+export default TaskFormBase;

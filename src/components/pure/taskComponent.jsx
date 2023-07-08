@@ -4,7 +4,7 @@ import { Task } from '../../models/task.class';
 import { LEVELS } from '../../models/levels.enum';
 
 // Importamos la hoja de estilos de task
-import '../../styles/task.css';
+import '../../styles/task.scss';
 
 
 const TaskComponent = ({task, complete, remove}) => {
@@ -45,9 +45,9 @@ const TaskComponent = ({task, complete, remove}) => {
      */
     function taskCompletedIcon(){
         if(task.completed){
-            return (<i onClick={() => complete(task)} className='bi-toggle-on task-action' style={ {color:'green', fontSize:'1.8rem'} }></i>)
+            return (<i onClick={() => complete(task)} className='bi bi-toggle-on task-action' style={ {color:'green', fontSize:'1.8rem'} }></i>)
         }else {
-            return (<i onClick={() => complete(task)} className='bi-toggle-off task-action' style={ {color: 'grey', fontSize:'1.8rem'}}></i>)
+            return (<i onClick={() => complete(task)} className='bi bi-toggle-off task-action' style={ {color: 'grey', fontSize:'1.8rem'}}></i>)
         }
     }
 
