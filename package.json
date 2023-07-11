@@ -24,7 +24,9 @@
     "build": "tsc && vite build",
     "serve": "vite preview --port 3000",
     "sass": "node_modules/sass/sass.js --watch src/styles/:src/styles/",
-    "tsc": "node_modules/typescript/bin/tsc"
+    "tsc": "node_modules/typescript/bin/tsc",
+    "eslint": "eslint --ext .tsx,.ts,.jsx,.js --fix ./src -c .eslintrc.json",
+    "eslint:err": "eslint --quiet --ext .tsx,.ts,.jsx,.js --fix ./src -c .eslintrc.json"
   },
   "devDependencies": {
     "@types/react": "^18.2.14",
@@ -34,6 +36,8 @@
     "@typescript-eslint/parser": "^5.61.0",
     "@vitejs/plugin-react": "^4.0.1",
     "eslint": "^8.44.0",
+    "eslint-config-standard-with-typescript": "^36.0.0",
+    "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.1",
     "sass": "^1.63.6",
