@@ -1,5 +1,3 @@
-import React from "react";
-
 
 // ** Public Pages **
 import NotFoundPage from "../pages/404/NotFoundPage";
