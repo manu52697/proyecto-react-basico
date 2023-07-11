@@ -8,6 +8,7 @@ import Root from "../components/navigation/root";
 import NotFoundPage from "../pages/404/NotFoundPage";
 import LoginPage from "../pages/auth/LoginPage";
 import RegisterPage from "../pages/auth/RegisterPage";
+import {DashBoardPage} from '../pages/dashboard/DashBoardPage';
 
 // routes
 import { PUBLIC_ROUTES } from "./public-routes";
@@ -32,7 +33,11 @@ export const useRouter = () =>  {
       {
         path: "signup",
         element: <RedirectIfLoggedIn children={<RegisterPage/>}/>
-      }
+      },
+      {
+        path: "dashboard",
+        element: <RedirectIfLoggedIn children={<DashBoardPage/>} />
+      },
     ],
     {
       basename: "",
