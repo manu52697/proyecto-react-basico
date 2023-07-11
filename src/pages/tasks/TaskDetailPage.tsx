@@ -1,15 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 // This helps parsing the path params and calling the loader function defined for the route
 import { useLoaderData, useParams } from 'react-router-dom';
+import { Task } from '../../models/task.class';
 
 
-const TaskDetailPage = () => {
+const TaskDetailPage: React.FunctionComponent = () => {
 
 
     const params = useParams();
-    const task = useLoaderData();
+    const task: Task | any = useLoaderData();
 
     return (
         <div>

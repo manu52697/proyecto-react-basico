@@ -1,7 +1,8 @@
 import React from 'react';
+// @ts-expect-error
 import TaskListComponent from '../../components/containers/task_list';
 
-const TaskPage = () => {
+const TaskPage: React.FunctionComponent = () => {
     return (
         <div>
         {/* filler or whatever */}
