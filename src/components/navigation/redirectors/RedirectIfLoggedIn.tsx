@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 import RedirigibleRoute from './RedirigibleRoute';
-import useUserCredentials from '../../../hooks/useUserCredentials';
+import useUserCredentials from '../../../hooks/auth/useUserCredentials';
 
 
 const RedirectIfLoggedIn = (props: {children:any}) => {

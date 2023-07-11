@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import useUserCredentials from '../../../hooks/useUserCredentials';
+import useUserCredentials from '../../../hooks/auth/useUserCredentials';
 import RedirigibleRoute from './RedirigibleRoute';
 
 
