@@ -1,65 +1,65 @@
-import React, {useState, useEffect} from 'react';
-import { Task } from '../../models/task.class';
-import { LEVELS } from '../../models/levels.enum';
-import TaskComponent from '../pure/taskComponent';
+import React, { useState, useEffect } from 'react'
+import { Task } from '../../models/task.class'
+import { LEVELS } from '../../models/levels.enum'
+import TaskComponent from '../pure/taskComponent'
 
 // Importamos la hoja de estilos task.scss
-import '../../styles/task.css';
+import '../../styles/task.css'
+
 // import TaskFormBase from '../pure/forms/tasks/taskFormBase';
-import Loader from '../pure/loader';
-import TaskFormik from '../pure/forms/tasks/taskFormik';
+import Loader from '../pure/loader'
+import TaskFormik from '../pure/forms/tasks/taskFormik'
 
 const TaskListComponent = () => {
+  const defaultTask1 = new Task('Example 1', 'Description 1', true, LEVELS.NORMAL)
+  const defaultTask2 = new Task('Example 2', 'Description 2', false, LEVELS.PRIORITY)
+  const defaultTask3 = new Task('Example 3', 'Description 3', false, LEVELS.BLOCKING)
 
-    const defaultTask1 = new Task('Example 1', 'Description 1', true, LEVELS.NORMAL);
-    const defaultTask2 = new Task('Example 2', 'Description 2', false, LEVELS.PRIORITY);
-    const defaultTask3 = new Task('Example 3', 'Description 3', false, LEVELS.BLOCKING);
+  // Estado del componente
+  const [tasks, setTasks] = useState([defaultTask1, defaultTask2, defaultTask3])
+  const [loading, setLoading] = useState(true)
 
-    // Estado del componente
-    const [tasks, setTasks] = useState([defaultTask1, defaultTask2, defaultTask3]);
-    const [loading, setLoading] = useState(true);
+  // Control del ciclo de vida del componente
+  useEffect(() => {
+    console.log('Task State has been modified')
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000)
 
-    //Control del ciclo de vida del componente
-    useEffect(() => {
-        console.log('Task State has been modified')
-        setTimeout(() => {
-            setLoading(false);
-        }, 2000);
-        
-        return () => {
-            console.log('TaskList is going to unmount...')
-        };
-    }, [tasks]);
-
-
-    function completeTask(task){
-        console.log('Complete this task: ' + task);
-        const index = tasks.indexOf(task);
-        const tempTasks = [...tasks];
-
-        tempTasks[index].completed = !tempTasks[index].completed;
-        // we update the state of the component and it will re-render the 
-        // view and redo the iteration in order to show the updated task
-        setTasks(tempTasks);
+    return () => {
+      console.log('TaskList is going to unmount...')
     }
+  }, [tasks])
 
-    function deleteTask(task){
-        console.log('Delete this task: ' + task);
-        const index = tasks.indexOf(task);
-        const tempTasks = [...tasks];
-        tempTasks.splice(index, 1);
-        setTasks(tempTasks);
-    }
+  function completeTask (task) {
+    console.log('Complete this task: ' + task)
+    const index = tasks.indexOf(task)
+    const tempTasks = [...tasks]
 
-    function addTask(task){
-        console.log('Add this task: ' + task);
-        const index = tasks.indexOf(task);
-        const tempTasks = [...tasks];
-        tempTasks.push(task);
-        setTasks(tempTasks);
-    }
+    tempTasks[index].completed = !tempTasks[index].completed
 
-    const taskTable = () => (
+    // we update the state of the component and it will re-render the
+    // view and redo the iteration in order to show the updated task
+    setTasks(tempTasks)
+  }
+
+  function deleteTask (task) {
+    console.log('Delete this task: ' + task)
+    const index = tasks.indexOf(task)
+    const tempTasks = [...tasks]
+    tempTasks.splice(index, 1)
+    setTasks(tempTasks)
+  }
+
+  function addTask (task) {
+    console.log('Add this task: ' + task)
+    const index = tasks.indexOf(task)
+    const tempTasks = [...tasks]
+    tempTasks.push(task)
+    setTasks(tempTasks)
+  }
+
+  const taskTable = () => (
         <table>
                 <thead>
                 <tr>
@@ -73,32 +73,32 @@ const TaskListComponent = () => {
                 </thead>
                 <tbody>
                     {tasks.map((task_, index) => {
-                        return (
-                        <TaskComponent 
-                            task={task_} 
-                            key={index} 
+                      return (
+                        <TaskComponent
+                            task={task_}
+                            key={index}
                             complete={completeTask}
                             remove={deleteTask}
                             >
                         </TaskComponent>
-                    )
+                      )
                     })}
                 </tbody>
             </table>
-    )
+  )
 
-    const noTasks = () => {
-        return (
+  const noTasks = () => {
+    return (
             <div>
                 <h3>No tasks to show</h3>
                 <h4>Please, create one</h4>
             </div>
-        )
-    }
+    )
+  }
 
-    const taskDisplay = tasks.length > 0 ? taskTable() : noTasks();
+  const taskDisplay = tasks.length > 0 ? taskTable() : noTasks()
 
-    return (
+  return (
         <div className='d-flex flex-row'>
         <div className='card'>
         {/* Card header */}
@@ -106,10 +106,10 @@ const TaskListComponent = () => {
                 <h4>Your Tasks:</h4>
             </div>
             {/* Card Body */}
-            <div className='card-body justify-content-center' data-mdb-perfect-scrollbar='true' style={ {minHeight:'60vh', minWidth:'30vw'} }>
+            <div className='card-body justify-content-center' data-mdb-perfect-scrollbar='true' style={ { minHeight: '60vh', minWidth: '30vw' } }>
             {loading ? <Loader></Loader> : taskDisplay}
             </div>
-            
+
         </div>
         <div className='col-1'></div>
         {/* //! DEPRECATED: Old form to add a task */}
@@ -118,9 +118,7 @@ const TaskListComponent = () => {
         {/* //TODO extract the card here and render the component right in the card-body */}
         <TaskFormik add={addTask} length={tasks.length}></TaskFormik>
         </div>
-    );
-};
+  )
+}
 
-
-
-export default TaskListComponent;
+export default TaskListComponent

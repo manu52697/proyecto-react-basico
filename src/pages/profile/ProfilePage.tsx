@@ -1,5 +1,6 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import type React from 'react'
+import { useNavigate } from 'react-router-dom'
+
 // import { User } from '../../models/user.class';
 
 // type ProfileProps = {
@@ -7,15 +8,14 @@ import { useNavigate } from 'react-router-dom';
 // }
 
 const ProfilePage: React.FunctionComponent = () => {
+  const navigate = useNavigate()
 
-    const navigate = useNavigate();
-
-    return (
+  return (
         <div>
             <h1>Your profile</h1>
-            <button onClick={() => navigate('/tasks')}>Go to tasks</button>
+            <button onClick={() => { navigate('/tasks') }}>Go to tasks</button>
         </div>
-    );
+  )
 }
 
-export default ProfilePage;
+export default ProfilePage

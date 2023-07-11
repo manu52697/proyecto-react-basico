@@ -1,32 +1,33 @@
-import React, { useEffect} from 'react';
+import type React from 'react'
+import { useEffect } from 'react'
+
 // import PropTypes from 'prop-types';
 
-type RedirigibleProps = {
-    redirectionFunction(): void,
-    redirectionCondition(): boolean,
-    children: React.ReactNode,
+interface RedirigibleProps {
+  redirectionFunction: () => void
+  redirectionCondition: () => boolean
+  children: React.ReactNode
 }
 
+const RedirigibleRoute: React.FunctionComponent<RedirigibleProps> = (
+  { redirectionFunction, redirectionCondition, children }) => {
+  useEffect(() => {
+    // If the redirection condition is true, execute the redirection function, otherwise do nothing
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    redirectionCondition() ? redirectionFunction() : null
+  })
 
-const RedirigibleRoute: React.FunctionComponent<RedirigibleProps> = ({ redirectionFunction, redirectionCondition , children}) => {
-
-    useEffect(() => {
-        // If the redirection condition is true, execute the redirection function, otherwise do nothing
-        redirectionCondition() ? redirectionFunction() : null ;
-    }, []);
-
-    return (
+  return (
         <>
-            {/* 
+            {/*
             This only renders after useEffect is done
-            If the user is redirected inside the hook, 
+            If the user is redirected inside the hook,
             the component will not render
               */}
-            { children }
+            { !redirectionCondition() ? children : '' }
         </>
-    );
-};
-
+  )
+}
 
 // RedirigibleRoute.propTypes = {
 //     redirectionFunction: PropTypes.func.isRequired,
@@ -34,5 +35,4 @@ const RedirigibleRoute: React.FunctionComponent<RedirigibleProps> = ({ redirecti
 //     children: PropTypes.any.isRequired,
 // };
 
-export default RedirigibleRoute;
-
+export default RedirigibleRoute

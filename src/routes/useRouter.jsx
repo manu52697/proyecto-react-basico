@@ -1,46 +1,40 @@
-import React from "react";
-import { createBrowserRouter } from "react-router-dom"; // lo que el tutorial dice
+import React from 'react'
+import { createBrowserRouter } from 'react-router-dom' // lo que el tutorial dice
 
 // Root route
-import Root from "../components/navigation/root";
+import Root from '../components/navigation/root'
 
 // Pages
-import NotFoundPage from "../pages/404/NotFoundPage";
-import LoginPage from "../pages/auth/LoginPage";
-import RegisterPage from "../pages/auth/RegisterPage";
-import {DashBoardPage} from '../pages/dashboard/DashBoardPage';
+import NotFoundPage from '../pages/404/NotFoundPage'
+import LoginPage from '../pages/auth/LoginPage'
+import RegisterPage from '../pages/auth/RegisterPage'
 
 // routes
-import { PUBLIC_ROUTES } from "./public-routes";
-import { USER_ROUTES } from "./user-routes";
-import RedirectIfLoggedIn from "../components/navigation/redirectors/RedirectIfLoggedIn";
+import { PUBLIC_ROUTES } from './public-routes'
+import { USER_ROUTES } from './user-routes'
+import RedirectIfLoggedIn from '../components/navigation/redirectors/RedirectIfLoggedIn'
 
-export const useRouter = () =>  {
-
-  //? El tutorial indica crearlo de esta manera, o pasando un "fromElements()" con "<Route/>"s
+export const useRouter = () => {
+  // ? El tutorial indica crearlo de esta manera, o pasando un "fromElements()" con "<Route/>"s
   return createBrowserRouter(
     [
       {
-        path: "/*",
+        path: '/*',
         element: <Root />,
         errorElement: <NotFoundPage />,
-        children: [...PUBLIC_ROUTES, ...USER_ROUTES], // *** Those are configured in 'src/routes/'
+        children: [...PUBLIC_ROUTES, ...USER_ROUTES] // *** Those are configured in 'src/routes/'
       },
       {
-        path: "login",
-        element: <RedirectIfLoggedIn children={<LoginPage/>} />,
+        path: 'login',
+        element: <RedirectIfLoggedIn children={<LoginPage/>} />
       },
       {
-        path: "signup",
+        path: 'signup',
         element: <RedirectIfLoggedIn children={<RegisterPage/>}/>
-      },
-      {
-        path: "dashboard",
-        element: <RedirectIfLoggedIn children={<DashBoardPage/>} />
-      },
+      }
     ],
     {
-      basename: "",
+      basename: ''
     }
-  );
-};
+  )
+}

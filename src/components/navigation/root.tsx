@@ -1,9 +1,7 @@
-import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom'
 
-const Root: React.FunctionComponent = () => {
-
-    return (
+const Root: () => React.JSX.Element = () => {
+  return (
         <>
             <aside className='d-flex flex-column App'>
                 <div className='App-intro'>
@@ -18,7 +16,7 @@ const Root: React.FunctionComponent = () => {
                 <Outlet></Outlet>
             </main>
         </>
-    );
+  )
 }
 
-export default Root;
+export default Root

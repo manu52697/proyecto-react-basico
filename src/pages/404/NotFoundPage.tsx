@@ -1,16 +1,15 @@
-import React from 'react';
-import { useRouteError } from 'react-router-dom';
+import type React from 'react'
+import { useRouteError } from 'react-router-dom'
 
 const NotFoundPage: React.FunctionComponent = () => {
+  const error = useRouteError()
+  console.error(error)
 
-    const error = useRouteError();
-    console.error(error);
-
-    return (
+  return (
         <div>
-            <h1>Oooops! We couldn't find that!</h1>
+            <h1>Oooops! We couldn&apos;t find that!</h1>
         </div>
-    );
+  )
 }
 
-export default NotFoundPage;
+export default NotFoundPage

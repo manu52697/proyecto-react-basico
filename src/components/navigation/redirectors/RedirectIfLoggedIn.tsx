@@ -1,30 +1,28 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
+import RedirigibleRoute from './RedirigibleRoute'
+import useUserCredentials from '../../../hooks/auth/useUserCredentials'
+import type { Credentials } from '../../../models/types/auth'
 
-import RedirigibleRoute from './RedirigibleRoute';
-import useUserCredentials from '../../../hooks/auth/useUserCredentials';
+const RedirectIfLoggedIn = (props: { children: any }): JSX.Element => {
+  const credentials = useUserCredentials() as unknown as Credentials
+  const navigate = useNavigate()
 
+  const doesRedirect = credentials.isLoggedIn
 
-const RedirectIfLoggedIn = (props: {children:any}) => {
+  function redirectLoggedUsers (): void {
+    alert('You are already logged in. Redirecting to home...')
+    navigate('/home', { replace: true })
+  }
 
-    const [credentials] = useUserCredentials();
-    const navigate = useNavigate();
-
-    const doesRedirect = credentials.isLoggedIn;
-
-    function redirectLoggedUsers(){
-        alert('You are already logged in. Redirecting to home...');
-        navigate('/home', { replace:true });
-    }
-
-    return (
-        <RedirigibleRoute 
-            redirectionCondition={() => doesRedirect} 
+  return (
+        <RedirigibleRoute
+            redirectionCondition={() => doesRedirect}
             redirectionFunction={redirectLoggedUsers}
         >
             {props.children}
         </RedirigibleRoute>
-    );
-};
+  )
+}
 
-export default RedirectIfLoggedIn;
+export default RedirectIfLoggedIn
