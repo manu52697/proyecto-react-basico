@@ -1,11 +1,14 @@
 import React from 'react';
 
-const LoginPage = () => {
+// @ts-expect-error
+import LoginFormik from '../../components/pure/forms/loginFormik';
+
+const LoginPage: React.FunctionComponent = () => {
     return (
         <div>
-            <h1>Login Page</h1>
             {/* Some filler for big screens */}
             {/* The actual login form */}
+            <LoginFormik></LoginFormik>
         </div>
     );
 }
