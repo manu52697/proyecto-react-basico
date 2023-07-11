@@ -7,6 +7,7 @@ import Root from "../components/navigation/root";
 // Pages
 import NotFoundPage from "../pages/404/NotFoundPage";
 import LoginPage from "../pages/auth/LoginPage";
+import RegisterPage from "../pages/auth/RegisterPage";
 
 // routes
 import { PUBLIC_ROUTES } from "./public-routes";
@@ -22,12 +23,16 @@ export const useRouter = () =>  {
         path: "/*",
         element: <Root />,
         errorElement: <NotFoundPage />,
-        children: [...PUBLIC_ROUTES, ...USER_ROUTES], // *** This are configured in 'src/routes/'
+        children: [...PUBLIC_ROUTES, ...USER_ROUTES], // *** Those are configured in 'src/routes/'
       },
       {
         path: "login",
         element: <RedirectIfLoggedIn children={<LoginPage/>} />,
       },
+      {
+        path: "signup",
+        element: <RedirectIfLoggedIn children={<RegisterPage/>}/>
+      }
     ],
     {
       basename: "",
