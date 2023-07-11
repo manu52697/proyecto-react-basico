@@ -7,7 +7,7 @@ export class User {
     password = '';
     role = ROLES.USER;
 
-    constructor(username, email, password, role){
+    constructor(username: string, email: string, password: string, role: ROLES){
         this.username = username;
         this.email = email;
         this.password = password;
