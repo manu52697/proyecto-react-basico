@@ -14,6 +14,7 @@ interface Credentials {
     isLoggedIn: boolean;
 }
 
+// ? Change isLoggedIn to true or false to check proper redirection
 const unLoggedCredentials: Credentials = {id:0, role:'anonymous', isLoggedIn:false};  // unlogged credentials
 
 export default function useUserCredentials(): [Credentials, (credentials: Credentials) => boolean] {
