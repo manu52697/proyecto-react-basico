@@ -6,8 +6,14 @@ import { LEVELS } from '../../models/levels.enum';
 // Importamos la hoja de estilos de task
 import '../../styles/task.scss';
 
+type TaskProps = {
+    task: Task,
+    complete: (task: Task) => void,
+    remove: (task: Task) => void,
+}
 
-const TaskComponent = ({task, complete, remove}) => {
+
+const TaskComponent: React.FunctionComponent<TaskProps> = ({task, complete, remove}) => {
 
     /* useEffect(() => {
         console.log('Task created')
