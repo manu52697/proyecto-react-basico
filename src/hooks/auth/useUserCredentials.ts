@@ -19,18 +19,25 @@ export default function useUserCredentials (credentials?: Credentials): Credenti
 */
 
   // * 1- Create the state. By default, use credentials for anonymous role
-  const [userCredentials, setUserCredentials] = useState(unLoggedCredentials)
+  // const [userCredentials, setUserCredentials] = useState(unLoggedCredentials)
+  let userCredentials: Credentials
 
   // * 2- We check if the argument is undefined
   if (credentials === undefined) {
     const serializedCredentials = sessionStorage.getItem('credentials')
-    const currentCredentials = serializedCredentials === null ? unLoggedCredentials : parseCredentials(serializedCredentials)
-    setUserCredentials(currentCredentials)
+
+    const currentCredentials = serializedCredentials === null
+      ? unLoggedCredentials
+      : parseCredentials(serializedCredentials)
+
+    // setUserCredentials(currentCredentials)
+    userCredentials = currentCredentials
+
     return userCredentials
   } else { // * 3- Set the state, store the credentials and return true if able, false otherwise
     try {
       sessionStorage.setItem('credentials', serializeCredentials(credentials))
-      setUserCredentials(credentials)
+      // setUserCredentials(credentials)
       return true
     } catch (err) {
       console.error(err)

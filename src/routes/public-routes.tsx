@@ -10,10 +10,10 @@ export const PUBLIC_ROUTES = [
     index: true,
     element: <HomePage/>
   },
-  {
-    path: '*',
-    element: <NotFoundPage/>
-  },
+  // {
+  //   path: '*',
+  //   element: <NotFoundPage/>
+  // },
   {
     path: 'home',
     element: <HomePage/>

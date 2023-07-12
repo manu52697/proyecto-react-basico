@@ -20,7 +20,7 @@ const LoginFormik: React.FunctionComponent = () => {
   const onSubmitLoginForm: (loginInfo: LoginInfo) => boolean = (loginInfo) => {
     const success = doLogin(loginInfo)
 
-    if (success) navigate('dashboard')
+    if (success) navigate('/dashboard')
 
     return false
   }

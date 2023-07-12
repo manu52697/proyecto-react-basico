@@ -33,9 +33,5 @@ export const USER_ROUTES = [
   {
     path: 'dashboard',
     element: <ProtectedRoute children={<DashBoardPage/>} />
-  },
-  {
-    path: 'profile',
-    element: <ProfilePage/>
   }
 ]

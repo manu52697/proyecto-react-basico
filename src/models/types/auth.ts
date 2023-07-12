@@ -23,4 +23,4 @@ export interface RegisterInfo {
 
 // Credentials for unlogged users
 // ? Change isLoggedIn to true or false to check proper redirection
-export const unLoggedCredentials: Credentials = { id: 0, role: 'anonymous', isLoggedIn: false }
+export const unLoggedCredentials: Credentials = { id: -1, role: 'anonymous', isLoggedIn: false }

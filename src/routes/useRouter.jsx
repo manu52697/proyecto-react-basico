@@ -1,4 +1,5 @@
-import React from 'react'
+/* eslint react/no-children-prop : 0 */
+
 import { createBrowserRouter } from 'react-router-dom' // lo que el tutorial dice
 
 // Root route
@@ -14,6 +15,7 @@ import { PUBLIC_ROUTES } from './public-routes'
 import { USER_ROUTES } from './user-routes'
 import RedirectIfLoggedIn from '../components/navigation/redirectors/RedirectIfLoggedIn'
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const useRouter = () => {
   // ? El tutorial indica crearlo de esta manera, o pasando un "fromElements()" con "<Route/>"s
   return createBrowserRouter(
