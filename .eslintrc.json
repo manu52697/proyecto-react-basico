@@ -25,7 +25,6 @@
         "quotes": ["error", "single"],
         "dot-location":["warn", "property"],
         "keyword-spacing":["warn", {"after":true}],
-        "lines-around-comment":["warn", {"beforeLineComment":true}], // "warn", {"allowObjectStart":true}, "allowArrayStart":true, "AllowClassStart":true
         "max-len":["warn", 120],
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
