@@ -5,6 +5,7 @@ export const TASK_LIST_DEMO = [
   new Task(
     1,
     'Example task 1',
+    // eslint-disable-next-line max-len
     'Aliqua sit velit magna ut. Reprehenderit in adipisicing elit fugiat ut reprehenderit fugiat mollit sit. Est commodo veniam sint sint adipisicing sint enim labore sint pariatur.',
     false,
     LEVELS.PRIORITY
@@ -19,6 +20,7 @@ export const TASK_LIST_DEMO = [
   new Task(
     3,
     'Example task 3',
+    // eslint-disable-next-line max-len
     'Amet laborum ad quis reprehenderit commodo. Adipisicing deserunt labore est minim amet aliquip ipsum adipisicing cillum nulla irure aliqua nostrud. Eu aute veniam nostrud voluptate amet cillum ex incididunt mollit do culpa.',
     false,
     LEVELS.NORMAL

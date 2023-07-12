@@ -10,10 +10,13 @@ import '../../styles/task.css'
 import Loader from '../pure/loader'
 import TaskFormik from '../pure/forms/tasks/taskFormik'
 
+// fake data
+import { TASK_LIST_DEMO } from '../../util/fake/taskPopulator'
+
 const TaskListComponent = () => {
-  const defaultTask1 = new Task('Example 1', 'Description 1', true, LEVELS.NORMAL)
-  const defaultTask2 = new Task('Example 2', 'Description 2', false, LEVELS.PRIORITY)
-  const defaultTask3 = new Task('Example 3', 'Description 3', false, LEVELS.BLOCKING)
+  const defaultTask1 = TASK_LIST_DEMO[0]
+  const defaultTask2 = TASK_LIST_DEMO[1]
+  const defaultTask3 = TASK_LIST_DEMO[2]
 
   // Estado del componente
   const [tasks, setTasks] = useState([defaultTask1, defaultTask2, defaultTask3])

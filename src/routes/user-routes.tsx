@@ -12,10 +12,6 @@ import ProtectedRoute from '../components/navigation/redirectors/ProtectedRoute'
 // TODO Eventually remove this fake data
 import { TASK_LIST_DEMO } from '../util/fake/taskPopulator'
 
-interface TaskDetailParams {
-  id: number
-}
-
 export const USER_ROUTES = [
   {
     path: 'profile',
@@ -28,7 +24,10 @@ export const USER_ROUTES = [
   {
     path: 'tasks/:id',
     element: <ProtectedRoute children={<TaskDetailPage/>}/>,
-    loader: async (params: TaskDetailParams) => TASK_LIST_DEMO[params.id]
+    // @ts-expect-error no type provided in rrd, should work as intended
+    loader: async ({ params }) => {
+      return TASK_LIST_DEMO[params.id]
+    }
   },
   {
     path: 'dashboard',

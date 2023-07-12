@@ -6,7 +6,7 @@ import { type Task } from '../../models/task.class'
 
 const TaskDetailPage: React.FunctionComponent = () => {
   const params = useParams()
-  const task: Task | any = useLoaderData()
+  const task = useLoaderData() as Task
 
   return (
         <div>
