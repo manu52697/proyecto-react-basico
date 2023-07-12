@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { LEVELS } from '../../../../models/levels.enum'
